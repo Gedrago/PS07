@@ -50,7 +50,6 @@ Build the binary classifier based on a single predictor variable: `DebtRatio`,
 
 ```{r, include=FALSE, eval= FALSE}
 cor(train)
-
 ```
 I decided to look at the correlation matrix to decide which variable to take as a predictor variable. The correlation of DebtRatio`,
 `age`, or `MonthlyIncome` with 'SeriousDlqin2yrs' is as follows -0.003291309,-0.102684838 and -0.019745547 respectively. As we can see, 'age' is the most correlated with 'SeriousDlqin2yrs' out of the three so we choose 'age' to be our predictor variable. 
@@ -107,6 +106,8 @@ abline(c(0, 1), lty=2)
 #predict outcomes for test data 
 log_odds_hat <- predict(model_logistic, newdata= test)
 p_hat <- 1/(1 + exp(-log_odds_hat))
+
+write.csv(submission , "submission.csv", row.names = FALSE) 
 
 ```
 
